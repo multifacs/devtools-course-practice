@@ -31,9 +31,6 @@ class SimpsonSolver {
   void setN(vector<int> n);
   void setDim(int dim);
 
-  bool operator==(const SimpsonSolver& other) const;
-  bool operator!=(const SimpsonSolver& other) const;
-
   double solve();
 
  private:
