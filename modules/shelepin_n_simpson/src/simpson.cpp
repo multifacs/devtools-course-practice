@@ -3,6 +3,7 @@
 #include "include/simpson.h"
 
 #include <algorithm>
+#include <cmath>
 #include <functional>
 #include <utility>
 #include <vector>
