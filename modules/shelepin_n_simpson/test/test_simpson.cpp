@@ -2,6 +2,11 @@
 
 #include <gtest/gtest.h>
 
+#include <algorithm>
+#include <functional>
+#include <utility>
+#include <vector>
+
 #include "include/simpson.h"
 
 TEST(Shelepin_Nikita_SimpsonSolverTest, DefaultConstructor) {
