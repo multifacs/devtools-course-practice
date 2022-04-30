@@ -8,6 +8,7 @@
 #include <vector>
 
 SimpsonSolver::SimpsonSolver() {
+  dim = 1;
   f = [](vector<double> vec) {
     double x = vec[0];
     return x;
@@ -16,21 +17,26 @@ SimpsonSolver::SimpsonSolver() {
   n = {1};
 }
 
-SimpsonSolver::SimpsonSolver(const function<double(vector<double>)> f,
+SimpsonSolver::SimpsonSolver(const int dim, const function<double(vector<double>)> f,
                              const vector<pair<double, double>> limits,
                              const vector<int> n) {
+  this->dim = dim;
   this->f = f;
   this->limits = limits;
   this->n = n;
 }
 
 SimpsonSolver::SimpsonSolver(const SimpsonSolver& other) {
+  this->dim = other.dim;
   this->f = other.f;
   this->limits = other.limits;
   this->n = other.n;
 }
 
 SimpsonSolver& SimpsonSolver::operator=(const SimpsonSolver& other) {
+  if (this == &other) return *this;
+
+  this->dim = other.dim;
   this->f = other.f;
   this->limits = other.limits;
   this->n = other.n;
@@ -47,6 +53,8 @@ vector<pair<double, double>> SimpsonSolver::getLimits() const {
 
 vector<int> SimpsonSolver::getN() const { return this->n; }
 
+int SimpsonSolver::getDim() const { return this->dim; }
+
 void SimpsonSolver::setFunction(const function<double(vector<double>)> f) {
   this->f = f;
 }
@@ -56,6 +64,8 @@ void SimpsonSolver::setLimits(const vector<pair<double, double>> limits) {
 }
 
 void SimpsonSolver::setN(vector<int> n) { this->n = n; }
+
+void SimpsonSolver::setDim(int dim) { this->dim = dim; }
 
 bool SimpsonSolver::operator==(const SimpsonSolver& other) const {
   return false;
