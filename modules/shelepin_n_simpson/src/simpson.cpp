@@ -2,6 +2,11 @@
 
 #include "include/simpson.h"
 
+#include <algorithm>
+#include <functional>
+#include <utility>
+#include <vector>
+
 SimpsonSolver::SimpsonSolver() {
   f = [](vector<double> vec) {
     double x = vec[0];
