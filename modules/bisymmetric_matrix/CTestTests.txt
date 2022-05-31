@@ -17,7 +17,7 @@ add_test(
     COMMAND ${APPLICATION} --help
 )
 set_tests_properties (${prefix}_get_help PROPERTIES
-    PASS_REGULAR_EXPRESSION "This program considers the integral"
+    PASS_REGULAR_EXPRESSION "This program solves bisymmetric matrices"
     LABELS "${MODULE}")
 
 add_test(
