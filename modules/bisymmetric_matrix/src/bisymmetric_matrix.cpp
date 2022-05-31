@@ -1,15 +1,15 @@
 // Copyright 2022 Shelepin Nikita
 
-#include <gtest/gtest.h>
-#include <vector>
-#include <random>
-
 #include "include/bisymmetric_matrix.h"
+
+#include <gtest/gtest.h>
+
+#include <random>
+#include <vector>
 
 // using std::vector;
 
-bool BisymmetricMatrix::isSymmetric(vector<vector<double>> mat)
-{
+bool BisymmetricMatrix::isSymmetric(vector<vector<double>> mat) {
   int N = static_cast<int>(mat.size());
 
   vector<vector<double>> temp(mat);
@@ -21,36 +21,32 @@ bool BisymmetricMatrix::isSymmetric(vector<vector<double>> mat)
   return true;
 }
 
-BisymmetricMatrix::BisymmetricMatrix()
-{
+BisymmetricMatrix::BisymmetricMatrix() {
   this->container = vector<vector<double>>();
   this->size = 0;
 }
 
-BisymmetricMatrix::BisymmetricMatrix(const BisymmetricMatrix& other)
-{
+BisymmetricMatrix::BisymmetricMatrix(const BisymmetricMatrix& other) {
   this->container = other.container;
   this->size = other.size;
 }
 
-BisymmetricMatrix::BisymmetricMatrix(const vector<vector<double>>& other)
-{
+BisymmetricMatrix::BisymmetricMatrix(const vector<vector<double>>& other) {
   if (!isSymmetric(other)) {
-    throw - 1;
+    throw -1;
   }
 
   this->container = other;
   this->size = other.size();
 }
 
-BisymmetricMatrix::BisymmetricMatrix(int n)
-{
+BisymmetricMatrix::BisymmetricMatrix(int n) {
   this->container = vector<vector<double>>(n, vector<double>(n, 0));
   this->size = n;
 }
 
-BisymmetricMatrix& BisymmetricMatrix::operator=(const BisymmetricMatrix& other)
-{
+BisymmetricMatrix& BisymmetricMatrix::operator=(
+    const BisymmetricMatrix& other) {
   if (this == &other) return *this;
 
   this->container = other.container;
@@ -58,10 +54,10 @@ BisymmetricMatrix& BisymmetricMatrix::operator=(const BisymmetricMatrix& other)
   return *this;
 }
 
-BisymmetricMatrix& BisymmetricMatrix::operator+(const BisymmetricMatrix& other)
-{
+BisymmetricMatrix& BisymmetricMatrix::operator+(
+    const BisymmetricMatrix& other) {
   if (this->size != other.size) {
-    throw - 1;
+    throw -1;
   }
 
   for (int i = 0; i < size; i++) {
@@ -74,10 +70,10 @@ BisymmetricMatrix& BisymmetricMatrix::operator+(const BisymmetricMatrix& other)
   return *this;
 }
 
-BisymmetricMatrix& BisymmetricMatrix::operator-(const BisymmetricMatrix& other)
-{
+BisymmetricMatrix& BisymmetricMatrix::operator-(
+    const BisymmetricMatrix& other) {
   if (this->size != other.size) {
-    throw - 1;
+    throw -1;
   }
 
   for (int i = 0; i < size; i++) {
@@ -90,17 +86,16 @@ BisymmetricMatrix& BisymmetricMatrix::operator-(const BisymmetricMatrix& other)
   return *this;
 }
 
-BisymmetricMatrix& BisymmetricMatrix::operator*(const BisymmetricMatrix& other)
-{
+BisymmetricMatrix& BisymmetricMatrix::operator*(
+    const BisymmetricMatrix& other) {
   if (this->size != other.size) {
-    throw - 1;
+    throw -1;
   }
 
   BisymmetricMatrix temp(size);
 
   for (int i = 0; i < size; i++) {
     for (int j = i; j < size; j++) {
-
       for (int k = 0; k < size; k++) {
         temp[i][j] += (*this)[i][k] * other[k][j];
       }
@@ -113,17 +108,16 @@ BisymmetricMatrix& BisymmetricMatrix::operator*(const BisymmetricMatrix& other)
   return *this;
 }
 
-BisymmetricMatrix& BisymmetricMatrix::operator/(const BisymmetricMatrix& other)
-{
+BisymmetricMatrix& BisymmetricMatrix::operator/(
+    const BisymmetricMatrix& other) {
   if (this->size != other.size) {
-    throw - 1;
+    throw -1;
   }
 
   BisymmetricMatrix temp(size);
 
   for (int i = 0; i < size; i++) {
     for (int j = i; j < size; j++) {
-
       for (int k = 0; k < size; k++) {
         temp[i][j] += (*this)[i][k] / other[k][j];
       }
@@ -136,8 +130,7 @@ BisymmetricMatrix& BisymmetricMatrix::operator/(const BisymmetricMatrix& other)
   return *this;
 }
 
-void BisymmetricMatrix::fillWithRand(int n)
-{
+void BisymmetricMatrix::fillWithRand(int n) {
   (*this) = BisymmetricMatrix(n);
 
   std::random_device device;
@@ -151,8 +144,7 @@ void BisymmetricMatrix::fillWithRand(int n)
     }
 }
 
-void BisymmetricMatrix::transpose(vector<vector<double>>* mat)
-{
+void BisymmetricMatrix::transpose(vector<vector<double>>* mat) {
   vector<vector<double>> temp(*mat);
   int size = mat->size();
   for (int i = 0; i < size; i++)

@@ -7,11 +7,11 @@
 #include <vector>
 
 class BMApplication {
-public:
+ public:
   BMApplication();
   std::string operator()(int argc, const char** argv);
 
-private:
+ private:
   std::string help();
   std::string argument_error();
 };

@@ -1,13 +1,14 @@
 // Copyright 2022 Shelepin Nikita
 
 #include "include/bisymmetric_matrix_application.h"
-#include "include/bisymmetric_matrix.h"
 
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
 #include <string>
 #include <vector>
+
+#include "include/bisymmetric_matrix.h"
 
 BMApplication::BMApplication() {}
 
@@ -24,7 +25,7 @@ std::string BMApplication::operator()(int argc, const char** argv) {
 
   if (std::string(argv[i]) == "--test1" || std::string(argv[i]) == "-t1") {
     int test_size = 2;
-    std::vector<std::vector<double>> test_matrix = { {1, 2}, {2, 1} };
+    std::vector<std::vector<double>> test_matrix = {{1, 2}, {2, 1}};
     BisymmetricMatrix a(test_matrix);
     BisymmetricMatrix b;
     b = a * a;
@@ -38,8 +39,7 @@ std::string BMApplication::operator()(int argc, const char** argv) {
 }
 
 std::string BMApplication::help() {
-  std::string help =
-    "This program solves bisymmetric matrices";
+  std::string help = "This program solves bisymmetric matrices";
   return help;
 }
 
