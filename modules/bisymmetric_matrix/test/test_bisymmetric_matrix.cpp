@@ -26,6 +26,15 @@ TEST(BisymmetricMatrix_Test, ParamConstructor) {
   ASSERT_EQ(a.getSize(), test_size);
 }
 
+TEST(BisymmetricMatrix_Test, Transpose) {
+  int test_size = 2;
+  std::vector<std::vector<double>> test_matrix = {{1, 2}, {3, 4}};
+  BisymmetricMatrix a;
+  a.transpose(&test_matrix);
+  ASSERT_EQ(test_matrix[0][0], 1);
+  ASSERT_EQ(test_matrix[1][0], 2);
+}
+
 TEST(BisymmetricMatrix_Test, ParamConstructor2) {
   int test_size = 2;
   std::vector<std::vector<double>> test_matrix = {{1, 2}, {2, 1}};
@@ -35,6 +44,11 @@ TEST(BisymmetricMatrix_Test, ParamConstructor2) {
   ASSERT_EQ(a[0][0], 1);
   ASSERT_EQ(a[1][0], 2);
 }
+
+// TEST(BisymmetricMatrix_Test, ParamConstructor_Not_Symmetric) {
+//  const std::vector<std::vector<double>> test_matrix1 = { {1, 2}, {3, 4} };
+//  ASSERT_ANY_THROW(BisymmetricMatrix(test_matrix1));
+//}
 
 TEST(BisymmetricMatrix_Test, CopyConstructor) {
   int test_size = 2;
@@ -57,4 +71,52 @@ TEST(BisymmetricMatrix_Test, CopyAssignment) {
   ASSERT_EQ(b.getSize(), test_size);
   ASSERT_EQ(b[0][0], 1);
   ASSERT_EQ(b[1][0], 2);
+}
+
+TEST(BisymmetricMatrix_Test, Plus) {
+  int test_size = 2;
+  std::vector<std::vector<double>> test_matrix = {{1, 2}, {2, 1}};
+  BisymmetricMatrix a(test_matrix);
+  BisymmetricMatrix b;
+  b = a + a;
+
+  ASSERT_EQ(b.getSize(), test_size);
+  ASSERT_EQ(b[0][0], 2);
+  ASSERT_EQ(b[1][0], 4);
+}
+
+TEST(BisymmetricMatrix_Test, Minus) {
+  int test_size = 2;
+  std::vector<std::vector<double>> test_matrix = {{1, 2}, {2, 1}};
+  BisymmetricMatrix a(test_matrix);
+  BisymmetricMatrix b;
+  b = a - a;
+
+  ASSERT_EQ(b.getSize(), test_size);
+  ASSERT_EQ(b[0][0], 0);
+  ASSERT_EQ(b[1][0], 0);
+}
+
+TEST(BisymmetricMatrix_Test, Multiply) {
+  int test_size = 2;
+  std::vector<std::vector<double>> test_matrix = {{1, 2}, {2, 1}};
+  BisymmetricMatrix a(test_matrix);
+  BisymmetricMatrix b;
+  b = a * a;
+
+  ASSERT_EQ(b.getSize(), test_size);
+  ASSERT_EQ(b[0][0], 5);
+  ASSERT_EQ(b[1][0], 4);
+}
+
+TEST(BisymmetricMatrix_Test, Divide) {
+  int test_size = 2;
+  std::vector<std::vector<double>> test_matrix = {{1, 2}, {2, 1}};
+  BisymmetricMatrix a(test_matrix);
+  BisymmetricMatrix b;
+  b = a / a;
+
+  ASSERT_EQ(b.getSize(), test_size);
+  ASSERT_EQ(b[0][0], 2);
+  ASSERT_DOUBLE_EQ(b[1][0], 2.5);
 }

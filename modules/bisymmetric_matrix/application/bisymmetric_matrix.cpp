@@ -6,7 +6,7 @@
 #include "include/bisymmetric_matrix_application.h"
 
 int main(int argc, const char** argv) {
-  BinaryTreeApplication app;
+  BMApplication app;
   std::string output = app(argc, argv);
   std::cout << output;
   return 0;
