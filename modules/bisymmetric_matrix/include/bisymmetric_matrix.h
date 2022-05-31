@@ -16,9 +16,9 @@ class BisymmetricMatrix {
 
  public:
   BisymmetricMatrix();
-  BisymmetricMatrix(const BisymmetricMatrix& other);
-  BisymmetricMatrix(const vector<vector<double>>& other);
-  BisymmetricMatrix(int n);
+  explicit BisymmetricMatrix(const BisymmetricMatrix& other);
+  explicit BisymmetricMatrix(const vector<vector<double>>& other);
+  explicit BisymmetricMatrix(int n);
 
   BisymmetricMatrix& operator=(const BisymmetricMatrix& other);
   vector<double> operator[](int i) const { return container[i]; }
