@@ -30,7 +30,7 @@ class BisymmetricMatrix {
   BisymmetricMatrix& operator/(const BisymmetricMatrix& other);
 
   void fillWithRand(int n);
-  void transpose();
+  void transpose(vector<vector<double>>* mat);
 
   int getSize() { return this->size; }
 };

@@ -12,8 +12,8 @@ bool BisymmetricMatrix::isSymmetric(vector<vector<double>> mat)
 {
   int N = static_cast<int>(mat.size());
 
-  BisymmetricMatrix temp(mat);
-  temp.transpose();
+  vector<vector<double>> temp(mat);
+  transpose(&temp);
 
   for (int i = 0; i < N; i++)
     for (int j = 0; j < N; j++)
@@ -151,10 +151,11 @@ void BisymmetricMatrix::fillWithRand(int n)
     }
 }
 
-void BisymmetricMatrix::transpose()
+void BisymmetricMatrix::transpose(vector<vector<double>>* mat)
 {
-  BisymmetricMatrix temp(*this);
-  for (int i = 0; i < this->size; i++)
-    for (int j = 0; j < this->size; j++) temp[i][j] = (*this).container[j][i];
-  (*this) = temp;
+  vector<vector<double>> temp(*mat);
+  int size = mat->size();
+  for (int i = 0; i < size; i++)
+    for (int j = 0; j < size; j++) temp[i][j] = (*mat)[j][i];
+  (*mat) = temp;
 }
