@@ -25,6 +25,29 @@ add_test(
     COMMAND ${APPLICATION} -t1
 )
 set_tests_properties (${prefix}_test1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "2"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test2
+    COMMAND ${APPLICATION} -t2
+)
+set_tests_properties (${prefix}_test2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "0"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test3
+    COMMAND ${APPLICATION} -t3
+)
+set_tests_properties (${prefix}_test3 PROPERTIES
     PASS_REGULAR_EXPRESSION "5"
     LABELS "${MODULE}")
 
+add_test(
+    NAME ${prefix}_test4
+    COMMAND ${APPLICATION} -t4
+)
+set_tests_properties (${prefix}_test4 PROPERTIES
+    PASS_REGULAR_EXPRESSION "2"
+    LABELS "${MODULE}")
