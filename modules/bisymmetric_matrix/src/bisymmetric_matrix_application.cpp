@@ -24,17 +24,6 @@ std::string BMApplication::operator()(int argc, const char** argv) {
   int i = 1;
 
   if (std::string(argv[i]) == "--test1" || std::string(argv[i]) == "-t1") {
-    std::vector<std::vector<double>> test_matrix = {{1, 2}, {2, 1}};
-    BisymmetricMatrix a(test_matrix);
-    BisymmetricMatrix b;
-    b = a * a;
-
-    os << a[0][0];
-    std::cout << os.str() << std::endl;
-    return "success";
-  }
-
-  if (std::string(argv[i]) == "--test1" || std::string(argv[i]) == "-t1") {
     std::vector<std::vector<double>> test_matrix = { {1, 2}, {2, 1} };
     BisymmetricMatrix a(test_matrix);
     BisymmetricMatrix b;
